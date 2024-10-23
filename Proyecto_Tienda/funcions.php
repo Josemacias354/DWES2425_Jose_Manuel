@@ -83,6 +83,25 @@ function crearCategoria($nom, $descripcio)
     return new Categoria($nom, $descripcio);
 }
 
+function agregarCategoriaAProducte(Producte $producte, Categoria $categoria)
+{
+    $producte->afegirCategoria($categoria);
+    $categoria->afegirProducte($producte);
+}
+
+function mostrarProductes(array $productes)
+{
+    foreach ($productes as $producte) {
+        echo "Nom: " . $producte->getNom() . "<br>";
+        echo "Descripció: " . $producte->getDescripcio() . "<br>";
+        echo "Preu: " . $producte->getPreu() . "<br><br>";
+    }
+}
+
+function obtenirProductesPerCategoria(Categoria $categoria)
+{
+    return $categoria->getProductes();
+}
 
 
 
