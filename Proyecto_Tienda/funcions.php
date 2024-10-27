@@ -102,8 +102,3 @@ function obtenirProductesPerCategoria(Categoria $categoria)
 {
     return $categoria->getProductes();
 }
-
-
-
-
-
