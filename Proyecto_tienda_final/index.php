@@ -148,6 +148,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Verifica si la solicitud es de ti
         <?php
         foreach ($_SESSION['productes'] as $index => $producte) { // Recorre los productos en la sesión.
             echo "<option value='$index'>" . htmlspecialchars($producte->getNom()) . "</option>"; // Muestra cada producto en el desplegable.
+        }
         ?>
     </select>
     </label>
@@ -157,7 +158,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Verifica si la solicitud es de ti
         foreach ($_SESSION['categories'] as $index => $categoria) { // Recorre las categorías en la sesión.
             echo "<option value='$index'>" . htmlspecialchars($categoria->getNom()) . "</option>";// Muestra cada categoría en el desplegable.
         }
-        }
+
         ?>
     </select>
     </label>
