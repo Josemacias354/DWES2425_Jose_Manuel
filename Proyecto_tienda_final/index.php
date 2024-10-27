@@ -1,5 +1,5 @@
 <?php
-require_once 'funciones.php';
+require_once 'funcions.php';
 
 session_start(); // Inicia la sesión.
 
