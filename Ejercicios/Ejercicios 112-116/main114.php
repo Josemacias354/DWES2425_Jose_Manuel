@@ -1,4 +1,4 @@
-<?php
+e<?php
 
 require_once "exercici114EmpleatConstructor.php";
 
