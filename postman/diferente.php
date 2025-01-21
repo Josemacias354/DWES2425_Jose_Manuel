@@ -1,15 +1,17 @@
-
 <?php
-$method = $_SERVER["REQUEST_METHOD"];$uri = $_SERVER["REQUEST_URI"];
 
-$script_name = $_SERVER["SCRIPT_NAME"];
-$relative_uri = substr($uri, strlen($script_name));
-$parts = explode("/", trim($relative_uri, "/"));
-$entryPoint = $parts[0];if ($entryPoint === "prueba") {
+header("Content-Type: application/json");
+$nombre = $_SERVER['PHP_SELF'];
+$method = $_SERVER['REQUEST_METHOD'];
+$uri = $_SERVER['REQUEST_URI'];
+$parts = explode("/", $uri);
+$entryPoint = end($parts);
+
+echo $nombre;
+if($entryPoint === 'prueba'){ {
     switch ($method) {
-        case "GET":
-            echo "Has utilizado el metodo GET.";
-            http_response_code(200);
+        case 'GET':http_response_code(200);
+            echo json_encode(["message" => "GET bien"]);
             $conexion = new mysqli("localhost", "root", "AAAAA9615", "EmpleadosDB");
 
             if ($conexion->connect_error) {
@@ -45,21 +47,15 @@ $entryPoint = $parts[0];if ($entryPoint === "prueba") {
                 echo "No se encontraron empleados.";
             }
             break;
-        case "POST":
-            echo "Has utilizado el metodo POST.";
+        case 'POST':
             http_response_code(200);
+            echo json_encode(["message" => "POST bien"]);
             break;
-        case "DELETE":
-            echo "Has utilizado el metodo DELETE.";
-            http_response_code(200);
+        case 'DELETE':http_response_code(200);
+            echo json_encode(["message" => "DELETE bien"]);
             break;
-        case "PUT":
-            echo "Has utilizado el metodo PUT.";
-            http_response_code(200);
+        default:http_response_code(405);
+            echo json_encode(["message" => "Método no permitido"]);
             break;
-        default:
-            echo "Este metodo no esta permitido";
-            http_response_code(400);
-            break;
-    }}
-else {    echo "URI incorrecta";    http_response_code(404);}?>
+    }}}
+
